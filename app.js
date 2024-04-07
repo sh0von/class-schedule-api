@@ -15,6 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(analyticsMiddleware);
+// app.use(authMiddleware);
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -38,12 +39,11 @@ const batchRoutes = require("./routes/batch");
 const miscRoutes = require("./routes/misc");
 const apiCallRoutes = require("./routes/apiCall");
 
-// app.use("/", authMiddleware);
 app.use("/departments", departmentRoutes);
 app.use("/instructors", instructorRoutes);
 app.use("/courses", courseRoutes);
 app.use("/batches", batchRoutes);
-app.use("/", miscRoutes);
+app.use("/misc", miscRoutes);
 app.use("/api-calls", apiCallRoutes);
 
 app.listen(PORT, () => {
