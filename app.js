@@ -34,12 +34,14 @@ const departmentRoutes = require("./routes/department");
 const instructorRoutes = require("./routes/instructor");
 const courseRoutes = require("./routes/course");
 const batchRoutes = require("./routes/batch");
+const miscRoutes = require("./routes/misc");
 
 
 app.use("/departments", departmentRoutes);
 app.use("/instructors", instructorRoutes);
 app.use("/courses", courseRoutes);
 app.use("/batches", batchRoutes);
+app.use("/misc", miscRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
