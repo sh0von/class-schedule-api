@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API CURL Commands</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .section {
+        margin-bottom: 40px;
+      }
+      .command {
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        overflow-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">API CURL Commands</h1>
+
+      <div class="section">
+        <h2 class="subtitle">Departments</h2>
+        <div class="command">curl -X GET http://localhost:3000/departments</div>
+        <div class="command">
+          curl -X POST -H "Content-Type: application/json" -d '{"name":"New
+          Department"}' http://localhost:3000/departments
+        </div>
+        <div class="command">
+          curl -X PUT -H "Content-Type: application/json" -d '{"name":"Updated
+          Department"}' http://localhost:3000/departments/123
+        </div>
+        <div class="command">
+          curl -X DELETE http://localhost:3000/departments/123
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="subtitle">Batches</h2>
+        <div class="command">curl -X GET http://localhost:3000/batches</div>
+        <div class="command">
+          curl -X POST -H "Content-Type: application/json" -d '{"name":"New
+          Batch"}' http://localhost:3000/batches
+        </div>
+        <div class="command">
+          curl -X PUT -H "Content-Type: application/json" -d '{"name":"Updated
+          Batch"}' http://localhost:3000/batches/123
+        </div>
+        <div class="command">
+          curl -X DELETE http://localhost:3000/batches/123
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="subtitle">Instructors</h2>
+        <div class="command">curl -X GET http://localhost:3000/instructors</div>
+        <div class="command">
+          curl -X POST -H "Content-Type: application/json" -d '{"name":"New
+          Instructor"}' http://localhost:3000/instructors
+        </div>
+        <div class="command">
+          curl -X PUT -H "Content-Type: application/json" -d '{"name":"Updated
+          Instructor"}' http://localhost:3000/instructors/123
+        </div>
+        <div class="command">
+          curl -X DELETE http://localhost:3000/instructors/123
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="subtitle">Courses</h2>
+        <div class="command">curl -X GET http://localhost:3000/courses</div>
+        <div class="command">
+          curl -X POST -H "Content-Type: application/json" -d '{"name":"New
+          Course","instructor":"Instructor ID","department":"Department
+          ID","batch":"Batch ID","time":"Course Time","day":"Course Day"}'
+          http://localhost:3000/courses
+        </div>
+        <div class="command">
+          curl -X PUT -H "Content-Type: application/json" -d '{"name":"Updated
+          Course","instructor":"Instructor ID","department":"Department
+          ID","batch":"Batch ID","time":"Course Time","day":"Course Day"}'
+          http://localhost:3000/courses/123
+        </div>
+        <div class="command">
+          curl -X DELETE http://localhost:3000/courses/123
+        </div>
+      </div>
+      <div class="section">
+        <h2 class="subtitle">Data Operations</h2>
+        <div class="command">curl -X GET http://localhost:3000/data</div>
+        <div class="command">
+          curl -X DELETE http://localhost:3000/delete-all-data
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
