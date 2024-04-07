@@ -3,12 +3,16 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const app = express();
-const PORT = process.env.PORT || 3000;
 const authMiddleware = require("./authMiddleware");
 
-app.use(cors());
 require("dotenv").config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(bodyParser.json());
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -24,9 +28,8 @@ const instructorRoutes = require("./routes/instructor");
 const courseRoutes = require("./routes/course");
 const batchRoutes = require("./routes/batch");
 
-app.use(bodyParser.json());
-
 app.use("/", authMiddleware);
+
 app.use("/departments", departmentRoutes);
 app.use("/instructors", instructorRoutes);
 app.use("/courses", courseRoutes);
