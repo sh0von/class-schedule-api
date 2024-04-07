@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const analyticsMiddleware = require("./analyticsMiddleware");
 
 // const authMiddleware = require("./authMiddleware");
 
@@ -14,6 +15,7 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(analyticsMiddleware);
 app.use(cors());
 app.use(bodyParser.json());
 
