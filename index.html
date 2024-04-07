@@ -93,7 +93,8 @@
 
       <div class="section">
         <h2 class="subtitle">Courses</h2>
-        <div class="command">curl -X GET http://localhost:3000/courses</div>
+        <div class="command">curl -X GET "http://localhost:3000/courses/?day=day&time=time&instructorId=instructor_id&departmentId=department_id&batchId=batch_id"
+        </div>
         <div class="command">
           curl -X POST -H "Content-Type: application/json" -d '{"name":"New
           Course","instructor":"Instructor ID","department":"Department
