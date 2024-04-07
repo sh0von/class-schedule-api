@@ -3,7 +3,11 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+
 const authMiddleware = require("./authMiddleware");
+
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
 require("dotenv").config();
 
@@ -23,12 +27,14 @@ db.once("open", () => {
   console.log("Connected to MongoDB");
 });
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 const departmentRoutes = require("./routes/department");
 const instructorRoutes = require("./routes/instructor");
 const courseRoutes = require("./routes/course");
 const batchRoutes = require("./routes/batch");
 
-// app.use("/", authMiddleware);
 
 app.use("/departments", departmentRoutes);
 app.use("/instructors", instructorRoutes);
