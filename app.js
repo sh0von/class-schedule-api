@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const analyticsMiddleware = require("./analyticsMiddleware");
-// const authMiddleware = require("./authMiddleware");
+const analyticsMiddleware = require("./middleware/analyticsMiddleware");
+// const authMiddleware = require("./middleware/authMiddleware");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");

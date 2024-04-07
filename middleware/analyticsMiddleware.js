@@ -1,4 +1,4 @@
-const ApiCall = require('./models/apiCall');
+const ApiCall = require('../models/apiCall');
 
 function storeApiCall(req, res, next) {
     const { method, url, query, body } = req;
