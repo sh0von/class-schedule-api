@@ -1,27 +1,22 @@
-// analyticsMiddleware.js
+const ApiCall = require('./models/apiCall');
 
-const fs = require('fs');
-
-function analyticsMiddleware(req, res, next) {
+function storeApiCall(req, res, next) {
     const { method, url, query, body } = req;
-    const timestamp = new Date().toISOString();
 
-    const logEntry = {
-        timestamp,
+    const apiCall = new ApiCall({
         method,
         url,
         query,
-        body
-    };
-
-    // Log the analytics data to a file
-    fs.appendFile('api-analytics.log', JSON.stringify(logEntry) + '\n', (err) => {
-        if (err) {
-            console.error('Failed to log API analytics:', err);
-        }
+        body,
+        timestamp: new Date() // Add a timestamp for when the API call was made
     });
 
-    next();
+    apiCall.save()
+        .then(() => next())
+        .catch(err => {
+            console.error('Failed to log API call:', err);
+            next(err); // Pass the error to the next middleware or error handler
+        });
 }
 
-module.exports = analyticsMiddleware;
+module.exports = storeApiCall;
