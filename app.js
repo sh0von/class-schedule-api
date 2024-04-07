@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
-const authMiddleware = require("./authMiddleware");
+// const authMiddleware = require("./authMiddleware");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
@@ -36,12 +36,12 @@ const courseRoutes = require("./routes/course");
 const batchRoutes = require("./routes/batch");
 const miscRoutes = require("./routes/misc");
 
-
+// app.use("/", authMiddleware);
 app.use("/departments", departmentRoutes);
 app.use("/instructors", instructorRoutes);
 app.use("/courses", courseRoutes);
 app.use("/batches", batchRoutes);
-app.use("/misc", miscRoutes);
+app.use("/", miscRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
