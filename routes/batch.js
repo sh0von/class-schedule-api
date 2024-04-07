@@ -2,6 +2,15 @@ const express = require("express");
 const router = express.Router();
 const Batch = require("../models/batch");
 
+router.get("/", async (req, res) => {
+  try {
+    const batches = await Batch.find();
+    res.json(batches);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to retrieve batches" });
+  }
+});
 router.post("/", async (req, res) => {
   try {
     const { name } = req.body;

@@ -28,7 +28,7 @@ const instructorRoutes = require("./routes/instructor");
 const courseRoutes = require("./routes/course");
 const batchRoutes = require("./routes/batch");
 
-app.use("/", authMiddleware);
+// app.use("/", authMiddleware);
 
 app.use("/departments", departmentRoutes);
 app.use("/instructors", instructorRoutes);
