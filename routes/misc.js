@@ -1,3 +1,9 @@
+const Course = require("../models/course");
+const Instructor = require("../models/instructor");
+const Department = require("../models/department");
+const Batch = require("../models/batch");
+const router = require("express").Router();
+
 router.get("/data", async (req, res) => {
   try {
     const courses = await Course.find()
@@ -33,3 +39,5 @@ router.delete("/delete-all-data", async (req, res) => {
       .json({ error: "Failed to delete all data. Please try again later." });
   }
 });
+
+module.exports = router;
