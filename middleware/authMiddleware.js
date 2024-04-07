@@ -1,13 +1,22 @@
-const dotenv = require("dotenv");
-require("dotenv").config();
-const authToken = process.env.AUTH_TOKEN;
+const ApiKey = require('../models/apiKey');
 
-const authMiddleware = (req, res, next) => {
-  const token = req.headers["auth-token"];
-  if (token === authToken) {
-    next();
-  } else {
-    res.status(401).json({ error: "Unauthorized" });
+const authMiddleware = async (req, res, next) => {
+  try {
+    const authHeader = req.headers["authorization"];
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      const token = authHeader.split(" ")[1];
+      const apiKey = await ApiKey.findOne({ key: token });
+      if (apiKey) {
+        next();
+      } else {
+        res.status(401).json({ error: "Unauthorized" });
+      }
+    } else {
+      res.status(401).json({ error: "Unauthorized" });
+    }
+  } catch (err) {
+    console.error("Error authenticating API key:", err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 

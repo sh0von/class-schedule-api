@@ -38,6 +38,7 @@ const courseRoutes = require("./routes/course");
 const batchRoutes = require("./routes/batch");
 const miscRoutes = require("./routes/misc");
 const apiCallRoutes = require("./routes/apiCall");
+const apiKeyRoutes = require("./routes/apiKey");
 
 app.use("/departments", departmentRoutes);
 app.use("/instructors", instructorRoutes);
@@ -45,6 +46,7 @@ app.use("/courses", courseRoutes);
 app.use("/batches", batchRoutes);
 app.use("/misc", miscRoutes);
 app.use("/api-calls", apiCallRoutes);
+app.use("/api-keys", apiKeyRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
