@@ -1,8 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const Department = require("../models/department");
+const authMiddleware = require("../middleware/authMiddleware");
 
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
+  try {
+    const departments = await Department.find();
+    res.json(departments);
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({
+        error: "Failed to retrieve departments. Please try again later.",
+      });
+  }
+});
+
+router.post("/",authMiddleware, async (req, res) => {
   try {
     const { name } = req.body;
 
@@ -25,7 +40,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:departmentId", async (req, res) => {
+router.put("/:departmentId",authMiddleware, async (req, res) => {
   try {
     const { departmentId } = req.params;
     const { name } = req.body;
@@ -47,7 +62,7 @@ router.put("/:departmentId", async (req, res) => {
   }
 });
 
-router.delete("/:departmentId", async (req, res) => {
+router.delete("/:departmentId",authMiddleware, async (req, res) => {
   try {
     const { departmentId } = req.params;
 
@@ -64,18 +79,5 @@ router.delete("/:departmentId", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  try {
-    const departments = await Department.find();
-    res.json(departments);
-  } catch (err) {
-    console.error(err);
-    res
-      .status(500)
-      .json({
-        error: "Failed to retrieve departments. Please try again later.",
-      });
-  }
-});
 
 module.exports = router;

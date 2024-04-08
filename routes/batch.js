@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Batch = require("../models/batch");
+const authMiddleware = require("../middleware/authMiddleware");
 
 router.get("/", async (req, res) => {
   try {
@@ -11,7 +12,8 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve batches" });
   }
 });
-router.post("/", async (req, res) => {
+
+router.post("/",authMiddleware, async (req, res) => {
   try {
     const { name } = req.body;
 
@@ -34,7 +36,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:batchId", async (req, res) => {
+router.put("/:batchId",authMiddleware, async (req, res) => {
   try {
     const { batchId } = req.params;
     const { name } = req.body;
@@ -56,7 +58,7 @@ router.put("/:batchId", async (req, res) => {
   }
 });
 
-router.delete("/:batchId", async (req, res) => {
+router.delete("/:batchId",authMiddleware, async (req, res) => {
   try {
     const { batchId } = req.params;
 

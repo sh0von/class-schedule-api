@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Course = require("../models/course");
+const authMiddleware = require("../middleware/authMiddleware");
 
 router.get("/", async (req, res) => {
   try {
@@ -38,7 +39,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/",authMiddleware, async (req, res) => {
   try {
     const { name, instructor, department, batch, time, day } = req.body;
 
@@ -64,7 +65,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:courseId", async (req, res) => {
+router.put("/:courseId",authMiddleware, async (req, res) => {
   try {
     const { courseId } = req.params;
     const { name, instructor, department, batch, time, day } = req.body;
@@ -86,7 +87,7 @@ router.put("/:courseId", async (req, res) => {
   }
 });
 
-router.delete("/:courseId", async (req, res) => {
+router.delete("/:courseId",authMiddleware, async (req, res) => {
   try {
     const { courseId } = req.params;
 

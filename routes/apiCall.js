@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const ApiCall = require("../models/apiCall");
+const authMiddleware = require("../middleware/authMiddleware");
 
-router.get("/", async (req, res) => {
+router.get("/",authMiddleware, async (req, res) => {
   try {
     const countRequested = req.query.count === "true";
 
