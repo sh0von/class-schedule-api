@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+
 const analyticsMiddleware = require("./middleware/analyticsMiddleware");
 // const authMiddleware = require("./middleware/authMiddleware");
 
@@ -46,7 +47,7 @@ app.use("/courses", courseRoutes);
 app.use("/batches", batchRoutes);
 app.use("/misc", miscRoutes);
 app.use("/api-calls", apiCallRoutes);
-app.use("/api-keys", apiKeyRoutes);
+app.use("/key", apiKeyRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
