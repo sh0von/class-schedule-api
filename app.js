@@ -7,8 +7,7 @@ const dotenv = require("dotenv");
 const analyticsMiddleware = require("./middleware/analyticsMiddleware");
 const authMiddleware = require("./middleware/authMiddleware");
 
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
+
 
 require("dotenv").config();
 
