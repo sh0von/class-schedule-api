@@ -5,7 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 
 const analyticsMiddleware = require("./middleware/analyticsMiddleware");
-// const authMiddleware = require("./middleware/authMiddleware");
+const authMiddleware = require("./middleware/authMiddleware");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(analyticsMiddleware);
-// app.use(authMiddleware);
+app.use(authMiddleware);
 app.use(cors());
 app.use(bodyParser.json());
 
