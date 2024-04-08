@@ -7,8 +7,6 @@ const dotenv = require("dotenv");
 const analyticsMiddleware = require("./middleware/analyticsMiddleware");
 const authMiddleware = require("./middleware/authMiddleware");
 
-
-
 require("dotenv").config();
 
 const app = express();
@@ -28,8 +26,6 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
   console.log("Connected to MongoDB");
 });
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 const departmentRoutes = require("./routes/department");
