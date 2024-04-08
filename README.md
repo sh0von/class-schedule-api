@@ -1,5 +1,13 @@
 ## Course Schedule Management API
 
+### IDEA
+
+- A simple API to manage courses, instructors, departments, and batches for universities or educational institutions.
+- The API allows the creation, updation, and deletion of courses, instructors, departments, and batches.
+- The API also allows the retrieval of courses based on various parameters like instructor, department, batch, day, and time.
+- The API also allows the registration and login of users with an API key for authentication.(Registration requires a code provided by the authority)
+
+
 ### API Endpoints
 
 #### Instructor
@@ -76,7 +84,7 @@
 
 - All GET operations are public.
 - Authentication is required for every POST, PUT, and DELETE operation using an API key generated during registration.
-- Access the API with 
+- Access the API with:
   ```json
   Authorization: Bearer KEY
   ```
