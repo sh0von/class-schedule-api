@@ -7,6 +7,23 @@
 - The API also allows the retrieval of courses based on various parameters like instructor, department, batch, day, and time.
 - The API also allows the registration and login of users with an API key for authentication.(Registration requires a code provided by the authority)
 
+### Setup
+
+- Clone the repository.
+- Install the dependencies using `npm install`.
+- Setup SMTP for sending emails.
+- Create a `.env` file in the root directory with the following variables:
+
+```plaintext
+MONGODB_URI=mongodb+srv://your_mongodb_uri
+CODE=your_code
+EMAIL_USER=your_email_address
+EMAIL_PASS=your_email_password
+SMTP_HOST=your_smtp_host
+SMTP_PORT=your_smtp_port
+```
+
+Replace your_mongodb_uri, your_code, your_email_address, your_email_password, your_smtp_host, and your_smtp_port with your specific values.
 
 ### API Endpoints
 
