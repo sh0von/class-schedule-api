@@ -10,7 +10,7 @@
 ### Setup
 
 - Clone the repository.
-- Install the dependencies using `npm install`.
+- Install the dependencies using `npm install`. I've used `express`, `mongoose`, `dotenv`, `nodemailer`,`cors` and `body-parser`.
 - Setup SMTP for sending emails.
 - Create a `.env` file in the root directory with the following variables:
 
