@@ -40,8 +40,8 @@ app.use("/instructors", instructorRoutes);
 app.use("/courses", courseRoutes);
 app.use("/batches", batchRoutes);
 app.use("/misc", miscRoutes);
-app.use("/api-calls", apiCallRoutes);
-app.use("/key", apiKeyRoutes);
+app.use("/logs", apiCallRoutes);
+app.use("/account", apiKeyRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-router.post("/create", async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const { email, code } = req.body;
 
@@ -122,24 +122,24 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/", authMiddleware, async (req, res) => {
-  try {
-    const users = await ApiKey.find();
-    res.json(users);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to retrieve users" });
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const users = await ApiKey.find();
+//     res.json(users);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Failed to retrieve users" });
+//   }
+// });
 
-router.delete("/delete", authMiddleware, async (req, res) => {
-  try {
-    await ApiKey.deleteMany({});
-    res.status(200).json({ message: "All users deleted successfully." });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to delete all users" });
-  }
-});
+// router.delete("/delete", async (req, res) => {
+//   try {
+//     await ApiKey.deleteMany({});
+//     res.status(200).json({ message: "All users deleted successfully." });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Failed to delete all users" });
+//   }
+// });
 
 module.exports = router;

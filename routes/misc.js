@@ -21,7 +21,7 @@ router.get("/data", async (req, res) => {
   }
 });
 
-router.delete("/delete-all-data", async (req, res) => {
+router.delete("/delete", async (req, res) => {
   try {
    
     await Promise.all([
