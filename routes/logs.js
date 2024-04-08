@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ApiCall = require("../models/apiCall");
+const ApiCall = require("../models/logs");
 const authMiddleware = require("../middleware/authMiddleware");
 
 router.get("/",authMiddleware, async (req, res) => {

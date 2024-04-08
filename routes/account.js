@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ApiKey = require("../models/apiKey");
+const ApiKey = require("../models/account");
 const nodemailer = require("nodemailer");
 const authMiddleware = require("../middleware/authMiddleware");
 

@@ -12,7 +12,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(analyticsMiddleware);
-// app.use(authMiddleware);
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -32,16 +31,16 @@ const instructorRoutes = require("./routes/instructor");
 const courseRoutes = require("./routes/course");
 const batchRoutes = require("./routes/batch");
 const miscRoutes = require("./routes/misc");
-const apiCallRoutes = require("./routes/apiCall");
-const apiKeyRoutes = require("./routes/apiKey");
+const logsRoute = require("./routes/logs");
+const accountRoutes = require("./routes/apiKey");
 
 app.use("/departments", departmentRoutes);
 app.use("/instructors", instructorRoutes);
 app.use("/courses", courseRoutes);
 app.use("/batches", batchRoutes);
 app.use("/misc", miscRoutes);
-app.use("/logs", apiCallRoutes);
-app.use("/account", apiKeyRoutes);
+app.use("/logs", logsRoute);
+app.use("/account", accountRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
