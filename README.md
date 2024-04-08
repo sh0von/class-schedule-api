@@ -13,35 +13,35 @@
 #### Instructor
 
 - `GET /instructors`
-- `POST /instructors`
+- `POST /instructors` (Requires authentication)
     ```json
     {
       "name": "example_instructor_name"
     }
-- `PUT /instructors/:id`
-- `DELETE /instructors/:id`
+- `PUT /instructors/:id` (Requires authentication)
+- `DELETE /instructors/:id` (Requires authentication)
 
 #### Department
 
 - `GET /departments`
-- `POST /departments`
+- `POST /departments` (Requires authentication)
     ```json
     {
       "name": "example_department_name"
     }
-- `PUT /departments/:id`
-- `DELETE /departments/:id`
+- `PUT /departments/:id` (Requires authentication)
+- `DELETE /departments/:id` (Requires authentication)
 
 #### Batch
 
 - `GET /batches`
-- `POST /batches`
+- `POST /batches` (Requires authentication)
     ```json
     {
       "name": "example_batch_name"
     }
-- `PUT /batches/:id`
-- `DELETE /batches/:id`
+- `PUT /batches/:id` (Requires authentication)
+- `DELETE /batches/:id` (Requires authentication)
 
 #### Course
 
@@ -61,7 +61,7 @@
       "time": "example_time"
     }
     ```
-- `POST /courses`
+- `POST /courses` (Requires authentication)
     ```json
     {
       "name": "example_course_name",
@@ -72,8 +72,8 @@
       "day": "example_day"
     }
     ```
-- `PUT /courses/:id`
-- `DELETE /courses/:id`
+- `PUT /courses/:id` (Requires authentication)
+- `DELETE /courses/:id` (Requires authentication)
 
 ### Procedure
 
@@ -85,9 +85,11 @@
 - All GET operations are public.
 - Authentication is required for every POST, PUT, and DELETE operation using an API key generated during registration.
 - Access the API with:
+
   ```json
   Authorization: Bearer KEY
   ```
+
 - Registration or login requires a code provided by the authority.
 
 ### Registration and Login
