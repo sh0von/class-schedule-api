@@ -121,6 +121,6 @@
 
 - Log every API call for tracking purposes.
 - Method:
-  - `GET /logs`
+  - `GET /logs` (Requires authentication)
   - Query Parameters:
     - `count=true/false`
