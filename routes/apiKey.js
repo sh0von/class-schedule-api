@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const ApiKey = require("../models/apiKey");
 const nodemailer = require("nodemailer");
+const authMiddleware = require("../middleware/authMiddleware");
+
 require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
@@ -16,7 +18,12 @@ const transporter = nodemailer.createTransport({
 
 router.post("/create", async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, code } = req.body;
+
+    if (code !== process.env.CODE) {
+      return res.status(401).json({ error: "Invalid code" });
+    }
+
     const key = [...Array(16)]
       .map(() => (~~(Math.random() * 36)).toString(36))
       .join("");
@@ -93,7 +100,11 @@ router.post("/create", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { email, apiKey } = req.body;
+    const { email, apiKey, code } = req.body;
+
+    if (code !== process.env.CODE) {
+      return res.status(401).json({ error: "Invalid code" });
+    }
 
     const user = await ApiKey.findOne({ email });
     if (!user) {
@@ -110,7 +121,8 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: "Failed to log in" });
   }
 });
-router.get("/", async (req, res) => {
+
+router.get("/", authMiddleware, async (req, res) => {
   try {
     const users = await ApiKey.find();
     res.json(users);
@@ -120,7 +132,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.delete("/delete", async (req, res) => {
+router.delete("/delete", authMiddleware, async (req, res) => {
   try {
     await ApiKey.deleteMany({});
     res.status(200).json({ message: "All users deleted successfully." });
